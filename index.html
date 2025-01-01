@@ -48,25 +48,27 @@ dynamically.
 
 
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Simulation</title>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Simulation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Weather Simulation</p>
-    <div class="container" id="weather">
-        <p id="temperature">Temperature</p>
-        <p id="condition">Condition</p>
-        <p id="cloudiness">Cloudiness</p>
-        <p id="windspeed">Windspeed</p>
-    </div>
-    <div class="container" id ="warning-container">
-        <p id="warning">Warning</p>
-    </div>
+    <div class="conteiner" id="animation"></div>
+  <h1>Weather Simulation</h1>
+  <div class="weather-container">
+    <h2>Current Weather</h2>
+    <p id="temperature">Temperature: <span id="temperature-value"></span>°C</p>
+    <p id="condition">Condition: <span id="condition-value"></span></p>
+    <p id="cloudiness">Cloudiness: <span id="cloudiness-value"></span>%</p>
+    <p id="windspeed">Windspeed: <span id="windspeed-value"></span> km/h</p>
+  </div>
+  <div class="warning-container">
+    <p id="warning"></p>
+  </div>
+  <script src="program.js"></script>
 </body>
 </html>
