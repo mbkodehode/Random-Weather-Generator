@@ -26,14 +26,19 @@ body{
 .rain{
     position: fixed;
     top: 0;
-    animation: rainfall 10ms linear forwards;
+    animation: rain-animation 10ms linear forwards;
 }
     
+.snowy{
+    position: fixed;
+    top: 0;
+    animation: snowy-animation 10ms linear forwards;
+}
 
     
 }
 
-#sun-animation{
+.sun-animation{
     height: 30vh;
     width: 20%;
     display: flex;
@@ -45,7 +50,18 @@ body{
     
 }
     
-#rain-animation{
+.rain-animation{
+    height: 30vh;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background:black;
+    animation: rain-animation 0.4s linear infinite;
+}
+
+.snowy-animation{
     height: 30vh;
     width: 20%;
     display: flex;

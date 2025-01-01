@@ -31,6 +31,25 @@ let interval = setInterval(() => {
     document.getElementById("windspeed-value").textContent = weather.windspeed;
 }, 3000);
 
+const weatherContainer = document.getElementById("animation");
+animation.classList.remove("sunny", "cloudy", "rainy", "snowy");
+if (weather.condition[0] === "snow") {
+    animation.classList.add("snowy");
+} else if (weather.condition[0] === "rain") {
+    animation.classList.add("rainy");
+} else if (weather.condition[0] === "clear") {
+    animation.classList.add("sunny");
+} else {
+    animation.classList.add("cloudy");
+}
+
+
+if (weather.condition[0] === "rain") {
+    setInterval(createRainElement, 10);
+  } else if (weather.condition[0] === "snow") {
+    setInterval(createSnowElement, 10);
+  }
+  
 function createRainElement() {
     const rain = document.createElement("div");
     rain.classList.add("rain");
@@ -48,9 +67,9 @@ function createSnowElement() {
     rain.style.animationDuration = `${Math.random() * 1 + 2}s`
     document.getElementById("snow-animation").appendChild(snow);
 }
-createRainElement();
+// createRainElement();
 
-createSnowElement();
+// createSnowElement();
 updateWeather();
 setInterval(() => {
     createRainElement();
