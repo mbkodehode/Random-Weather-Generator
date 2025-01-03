@@ -1,5 +1,5 @@
 class Weather {
-    constructor(parameters) {
+    constructor() {
         this.temperature = 0;
         this.condition = "";
         this.cloudiness = 0;
@@ -21,57 +21,71 @@ class Weather {
         }
     }
 }
-
+let weather = new Weather();
+weather.updateWeather();
 let interval = setInterval(() => {
-    let weather = new Weather();
     weather.updateWeather();
     document.getElementById("temperature-value").textContent = weather.temperature;
     document.getElementById("condition-value").textContent = weather.condition;
     document.getElementById("cloudiness-value").textContent = weather.cloudiness;
     document.getElementById("windspeed-value").textContent = weather.windspeed;
-}, 3000);
 
-const weatherContainer = document.getElementById("animation");
-animation.classList.remove("sunny", "cloudy", "rainy", "snowy");
-if (weather.condition[0] === "snow") {
-    animation.classList.add("snowy");
+
+const animation = document.getElementById("animation");
+animation.classList.remove("snowy-animation", "rain-animation", "clear-animation");
+
+if (weather.condition[0] === "rain") {
+    animation.classList.add("snow-animation");
 } else if (weather.condition[0] === "rain") {
-    animation.classList.add("rainy");
+    animation.classList.add("rain-animation");
 } else if (weather.condition[0] === "clear") {
-    animation.classList.add("sunny");
-} else {
-    animation.classList.add("cloudy");
-}
+    animation.classList.add("clear-animation");
+} 
 
 
 if (weather.condition[0] === "rain") {
+    animation.classList.add("rain-animation");
     setInterval(createRainElement, 10);
   } else if (weather.condition[0] === "snow") {
     setInterval(createSnowElement, 10);
   }
-  
+}, 3000);
 function createRainElement() {
     const rain = document.createElement("div");
     rain.classList.add("rain");
     rain.innerText = "💧"
-    rain.style.left = `${Math.random() * 100}vw`
-    rain.style.animationDuration = `${Math.random() * 1 + 2}s`
-    document.getElementById("rain-animation").appendChild(rain);
-}
+    rain.style.top = `${Math.random() * 100}%`;
+    rain.style.left = `${Math.random() * 100}%`;
+    rain.style.animationDelay = `${Math.random() * 2}s`;
+    rain.style.animationDuration = `${Math.random() * 1 + 2}s`;
+    document.getElementsByClassName("animation")[0].appendChild(rain);
+
+    rain.addEventListener("animationend", () => {
+        if (rain.classList.contains("snow") || rain.classList.contains("clear")) {
+            rain.remove();
+        }
+    });
+    };
+
+
 
 function createSnowElement() {
-    const rain = document.createElement("div");
-    rain.classList.add("snow");
-    rain.innerText = "❄️"
-    rain.style.left = `${Math.random() * 100}vw`
-    rain.style.animationDuration = `${Math.random() * 1 + 2}s`
-    document.getElementById("snow-animation").appendChild(snow);
+    const snow = document.createElement("div");
+    snow.classList.add("snow");
+    snow.innerText = "❄️"
+    snow.style.left = `${Math.random() * 100}%`
+    snow.style.animationDuration = `${Math.random() * 1 + 2}s`
+    document.getElementById("animation").appendChild(snow);
+    
+    if (classList.contains("rain, clear")) {
+        snow.remove();
+    };
 }
-// createRainElement();
 
-// createSnowElement();
-updateWeather();
+
+weather.updateWeather();
 setInterval(() => {
-    createRainElement();
+createRainElement();
 }, 10);
+clearInterval(interval);
 
